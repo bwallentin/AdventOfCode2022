@@ -5,6 +5,7 @@ using AdventOfCode.Day4;
 using AdventOfCode.Day5;
 using AdventOfCode.Day6;
 using AdventOfCode.Day7;
+using AdventOfCode.Day8;
 
 //new Day1().Work();
 //new Day2().Work();
@@ -12,4 +13,5 @@ using AdventOfCode.Day7;
 //new Day4().Work();
 //new Day5().Work();
 //new Day6().Work();
-new Day7().Work();
+//new Day7().Work();
+new Day8().Work();
