@@ -26,10 +26,10 @@ namespace AdventOfCode.Day8
             {
                 for (var y = 0; y < array.GetLength(1); y++)
                 {
-                    var left = StepLeft(array, x, y, size);
-                    var right = StepRight(array, x, y, size);
-                    var up = StepUp(array, x, y, size);
-                    var down = StepDown(array, x, y, size);
+                    var left = StepLeft(array, x, y);
+                    var right = StepRight(array, x, y);
+                    var up = StepUp(array, x, y);
+                    var down = StepDown(array, x, y);
 
                     if (left.visible || right.visible || up.visible || down.visible)
                     {
@@ -55,10 +55,10 @@ namespace AdventOfCode.Day8
                         continue;
                     }
 
-                    var up = StepUp(array, x, y, size);
-                    var left = StepLeft(array, x, y, size);
-                    var right = StepRight(array, x, y, size);
-                    var down = StepDown(array, x, y, size);
+                    var up = StepUp(array, x, y);
+                    var left = StepLeft(array, x, y);
+                    var right = StepRight(array, x, y);
+                    var down = StepDown(array, x, y);
 
                     var total = left.viewDistance * right.viewDistance * up.viewDistance * down.viewDistance;
 
@@ -73,7 +73,7 @@ namespace AdventOfCode.Day8
         }
 
 
-        private static (bool visible, int viewDistance) StepLeft(int[,] array, int x, int y, int maxLength)
+        private static (bool visible, int viewDistance) StepLeft(int[,] array, int x, int y)
         {
             var viewDistance = 0;
 
@@ -106,7 +106,7 @@ namespace AdventOfCode.Day8
         }
 
 
-        private static (bool visible, int viewDistance) StepRight(int[,] array, int x, int y, int maxLength)
+        private static (bool visible, int viewDistance) StepRight(int[,] array, int x, int y)
         {
             var viewDistance = 0;
 
@@ -118,7 +118,7 @@ namespace AdventOfCode.Day8
             var value = array[x, y];
             var visible = false;
 
-            for (var i = y+1; i < maxLength; i++)
+            for (var i = y+1; i < size; i++)
             {
                 viewDistance++;
                 var current = array[x, i];
@@ -138,7 +138,7 @@ namespace AdventOfCode.Day8
         }
 
 
-        private static (bool visible, int viewDistance) StepUp(int[,] array, int x, int y, int maxLength)
+        private static (bool visible, int viewDistance) StepUp(int[,] array, int x, int y)
         {
             var viewDistance = 0;
 
@@ -169,7 +169,7 @@ namespace AdventOfCode.Day8
             return (visible, viewDistance);
         }
 
-        private static (bool visible, int viewDistance) StepDown(int[,] array, int x, int y, int maxLength)
+        private static (bool visible, int viewDistance) StepDown(int[,] array, int x, int y)
         {
             var viewDistance = 0;
 
@@ -181,7 +181,7 @@ namespace AdventOfCode.Day8
             var value = array[x, y];
             var visible = false;
 
-            for (var i = x + 1; i < maxLength; i++)
+            for (var i = x + 1; i < size; i++)
             {
                 viewDistance++;
                 var current = array[i, y];
